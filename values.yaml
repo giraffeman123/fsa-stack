@@ -36,7 +36,7 @@ deployment:
     imageTag: latest
     imagePullPolicy: Always
     containerPort: 8080
-    replicaCount: 2
+    replicaCount: 1
     service:
       name: fsa-api
       type: NodePort
@@ -54,7 +54,7 @@ deployment:
     imageTag: latest
     imagePullPolicy: Always
     containerPort: 8080
-    replicaCount: 2
+    replicaCount: 1
     service:
       name: fsa-webapp
       type: NodePort
