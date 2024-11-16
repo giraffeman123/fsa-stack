@@ -30,7 +30,7 @@ deployment:
   fsaApi:
     imagePullSecrets: []
     imageName: <ADD_FSAAPI_IMAGE_URL_HERE>
-    imageTag: node-alpine3.18
+    imageTag: ${IMAGE_TAG}
     imagePullPolicy: Always
     containerPort: 8080
     replicaCount: 1
