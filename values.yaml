@@ -30,7 +30,7 @@ deployment:
   fsaApi:
     imagePullSecrets: []
     imageName: <ADD_FSAAPI_IMAGE_URL_HERE>
-    imageTag: ${IMAGE_TAG}
+    imageTag: 1.0.0-be37edc
     imagePullPolicy: Always
     containerPort: 8080
     replicaCount: 1
