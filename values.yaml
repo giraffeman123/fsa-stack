@@ -47,7 +47,7 @@ deployment:
   fsaWebApp:
     imagePullSecrets: []
     imageName: <ADD_FSAWEBAPP_IMAGE_URL_HERE>
-    imageTag: 1.0.0-bb0a1ed
+    imageTag: 1.0.0-e7f3655
     imagePullPolicy: Always
     containerPort: 8080
     replicaCount: 1
