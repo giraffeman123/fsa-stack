@@ -20,13 +20,15 @@ spec:
         - name: {{ (splitList "/" .Values.deployment.fsaWebApp.imageName) | last }}-app
           image: {{ .Values.deployment.fsaWebApp.imageName }}:{{ .Values.deployment.fsaWebApp.imageTag }}
           imagePullPolicy: {{ .Values.deployment.fsaWebApp.imagePullPolicy }}
-          env:
-            - name: TZ
-              value: America/Tijuana
+          env:            
             - name: XAL_DIGITAL_API_BASE_URL
               value: "http://{{ .Values.deployment.fsaApi.service.name }}:{{ .Values.deployment.fsaApi.service.port }}"                 
             - name: SERVER_PORT
-              value: "{{ .Values.deployment.fsaWebApp.containerPort }}"    
+              value: "{{ .Values.deployment.fsaWebApp.containerPort }}"   
+          {{- range $key, $val := .Values.deployment.fsaWebApp.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+          {{- end }}                 
           ports:
             - containerPort: {{ .Values.deployment.fsaWebApp.containerPort }}
           readinessProbe:

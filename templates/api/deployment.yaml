@@ -19,22 +19,14 @@ spec:
       containers:
         - name: {{ (splitList "/" .Values.deployment.fsaApi.imageName) | last }}-app
           image: {{ .Values.deployment.fsaApi.imageName }}:{{ .Values.deployment.fsaApi.imageTag }}
-          imagePullPolicy: {{ .Values.deployment.fsaApi.imagePullPolicy }}
-          env:
-            - name: TZ
-              value: America/Tijuana
+          imagePullPolicy: {{ .Values.deployment.fsaApi.imagePullPolicy }}                              
+          env:        
             - name: PORT
-              value: "{{ .Values.deployment.fsaApi.containerPort }}"    
-            - name: DB_HOST
-              value: "<ADD_DB_URL_HERE>"   
-            - name: DB_USER
-              value: "admin"   
-            - name: DB_PWD
-              value: "holamundo123"   
-            - name: DB_NAME
-              value: "flightdb"   
-            - name: ANSWER_ENDPOINT
-              value: "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=perl&site=stackoverflow"                          
+              value: "{{ .Values.deployment.fsaApi.containerPort }}"          
+          {{- range $key, $val := .Values.deployment.fsaApi.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+          {{- end }}                                                  
           ports:
             - containerPort: {{ .Values.deployment.fsaApi.containerPort }}
           readinessProbe:
