@@ -32,6 +32,7 @@ deployment:
     imageName: <ADD_FSAAPI_IMAGE_URL_HERE>
     imageTag: 1.0.0-10653a5
     imagePullPolicy: Always
+    serviceAccountName: <ADD_FSAAPI_SERVICE_ACCOUNT_HERE>
     containerPort: 8080
     replicaCount: 1              
     env:      

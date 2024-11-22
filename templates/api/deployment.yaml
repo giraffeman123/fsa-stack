@@ -16,6 +16,7 @@ spec:
       labels:
         app: {{ (splitList "/" .Values.deployment.fsaApi.imageName) | last }}
     spec:
+      serviceAccountName: {{ .Values.deployment.fsaApi.serviceAccountName }} 
       containers:
         - name: {{ (splitList "/" .Values.deployment.fsaApi.imageName) | last }}-app
           image: {{ .Values.deployment.fsaApi.imageName }}:{{ .Values.deployment.fsaApi.imageTag }}
