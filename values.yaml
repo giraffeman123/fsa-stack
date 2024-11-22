@@ -30,16 +30,16 @@ deployment:
   fsaApi:
     imagePullSecrets: []
     imageName: <ADD_FSAAPI_IMAGE_URL_HERE>
-    imageTag: 1.0.0-10653a5
+    imageTag: 1.0.0-5d61cc3
     imagePullPolicy: Always
     serviceAccountName: <ADD_FSAAPI_SERVICE_ACCOUNT_HERE>
     containerPort: 8080
-    replicaCount: 1              
-    env:      
-      # TZ: "<INSTERT_HERE_TIMEZONE>"      
-      # ANSWER_ENDPOINT: "<INSTERT_HERE_ANSWER_ENDPOINT>"      
-      # AWS_REGION: "<INSTERT_HERE_AWS_REGION>"      
-      # DB_SECRET_NAME: "<INSTERT_HERE_DB_SECRET_NAME>"       
+    replicaCount: 1
+    env:
+    # TZ: "<INSTERT_HERE_TIMEZONE>"      
+    # ANSWER_ENDPOINT: "<INSTERT_HERE_ANSWER_ENDPOINT>"      
+    # AWS_REGION: "<INSTERT_HERE_AWS_REGION>"      
+    # DB_SECRET_NAME: "<INSTERT_HERE_DB_SECRET_NAME>"       
     service:
       name: fsa-api
       type: NodePort
@@ -50,7 +50,6 @@ deployment:
     # requests:
     #   cpu: 100m
     #   memory: 450Mi
-
   fsaWebApp:
     imagePullSecrets: []
     imageName: <ADD_FSAWEBAPP_IMAGE_URL_HERE>
@@ -58,8 +57,8 @@ deployment:
     imagePullPolicy: Always
     containerPort: 8080
     replicaCount: 1
-    env:      
-      # TZ: "<INSTERT_HERE_TIMEZONE>"     
+    env:
+    # TZ: "<INSTERT_HERE_TIMEZONE>"     
     service:
       name: fsa-webapp
       type: NodePort
@@ -70,7 +69,6 @@ deployment:
     # requests:
     #   cpu: 100m
     #   memory: 450Mi  
-
 podAnnotations: {}
 podSecurityContext: {}
 # fsGroup: 2000
