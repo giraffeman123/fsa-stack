@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .Values.ingress.tls.certificateName }} 
+  namespace: {{ .Values.namespace }}
+spec:
+  dnsNames:
+  - {{ .Values.ingress.host }} 
+  issuerRef:
+    kind: ClusterIssuer
+    name: {{ .Values.ingress.tls.clusterIssuer }} 
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  secretName: {{ .Values.ingress.tls.secretName }} 
+  usages:
+  - server auth
+  - client auth
