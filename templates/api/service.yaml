@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: {{ .Values.deployment.fsaApi.service.name }}    
   namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ (splitList "/" .Values.deployment.fsaApi.imageName) | last }}    
+    service: {{ (splitList "/" .Values.deployment.fsaApi.imageName) | last }}     
 spec:
   selector:
     app: {{ (splitList "/" .Values.deployment.fsaApi.imageName) | last }}

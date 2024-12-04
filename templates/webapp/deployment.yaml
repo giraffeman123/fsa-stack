@@ -6,15 +6,21 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     name: {{ (splitList "/" .Values.deployment.fsaWebApp.imageName) | last }}-apps
+    app: {{ (splitList "/" .Values.deployment.fsaWebApp.imageName) | last }}
+    version: v1    
 spec:
   replicas: {{ .Values.deployment.fsaWebApp.replicaCount }}
   selector:
     matchLabels:
       app: {{ (splitList "/" .Values.deployment.fsaWebApp.imageName) | last }}
+      version: v1
   template:
     metadata:
       labels:
         app: {{ (splitList "/" .Values.deployment.fsaWebApp.imageName) | last }}
+        version: v1
+      annotations:
+        sidecar.istio.io/extraStatTags: destination_port,request_host,request_path,request_url_path,request_method,request_headers,request_referer,request_useragent,request_query,request_client_ip        
     spec:
       containers:
         - name: {{ (splitList "/" .Values.deployment.fsaWebApp.imageName) | last }}-app
